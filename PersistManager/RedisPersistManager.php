@@ -44,7 +44,7 @@ class RedisPersistManager implements PersistManagerInterface
             if ($result) {
                 return $this->unserializeRequest($result[1]);
             }
-            return false;
+            return null;
         }
 
         return $this->unserializeRequest($this->redis->lPop($this->keyPrefix));

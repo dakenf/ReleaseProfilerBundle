@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/dakenf/ReleaseProfilerBundle.svg?branch=master)](https://travis-ci.org/dakenf/ReleaseProfilerBundle)
 [![Code Coverage](https://scrutinizer-ci.com/g/dakenf/ReleaseProfilerBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/dakenf/ReleaseProfilerBundle/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dakenf/ReleaseProfilerBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dakenf/ReleaseProfilerBundle/?branch=master)
 
 Introduction
 ============

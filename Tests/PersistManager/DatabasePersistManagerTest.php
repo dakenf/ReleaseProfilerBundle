@@ -14,12 +14,13 @@ class DatabasePersistManagerTest extends \PHPUnit_Framework_TestCase
         $em
             ->expects($this->once())
             ->method('persist')
-            ->with($this->equalTo($request));
+            ->with($this->equalTo($request))
+        ;
 
         $em
             ->expects($this->once())
             ->method('flush')
-            ->with($this->equalTo($request));
+        ;
 
         $pm = new DatabasePersistManager($em);
         $pm->persist($request);
