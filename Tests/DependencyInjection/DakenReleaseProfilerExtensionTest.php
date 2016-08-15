@@ -177,13 +177,12 @@ class DakenReleaseProfilerExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasParameter('daken_release_profiler.slack.emoji', 'emoji');
     }
 
+    /**
+     * @expectedException        Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage You must set entity_manager parameter.
+     */
     public function testDatabaseEntityManager()
     {
-        $this->expectException(get_class(new InvalidConfigurationException()));
-        $this->expectExceptionMessage(
-            "You must set entity_manager parameter."
-        );
-
         $config = $this->getValidConfig();
         unset($config['entity_manager']);
 
