@@ -14,7 +14,7 @@ class DakenReleaseProfilerBundle extends Bundle
             ->getConnection()
             ->getConfiguration();
 
-        if (php_sapi_name() != 'cli') {
+        if (php_sapi_name() != 'cli' || $this->container->hasParameter('daken_release_profiler.force_sql_logger')) {
             $logger = $this->container->get('daken_release_profiler.sql_logger');
             $logger->setOldLogger($doctrineConfig->getSQLLogger());
             $doctrineConfig->setSQLLogger($logger);
