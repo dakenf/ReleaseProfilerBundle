@@ -20,8 +20,10 @@ in redis. After that it is persisted to database using `daken:profiler:flush` co
 
 Using redis is strongly recommended as it won't add significant overhead to each of your requests.
 
-[[https://raw.githubusercontent.com/dakenf/ReleaseProfilerBundle/master/Resources/readme_images/request_list.png]]
-[[https://raw.githubusercontent.com/dakenf/ReleaseProfilerBundle/master/Resources/readme_images/request.png]]
+![Request list](Resources/readme_images/request_list.png)
+
+
+![Request details](Resources/readme_images/request.png)
 
 Installation
 ============
