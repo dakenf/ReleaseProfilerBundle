@@ -13,7 +13,7 @@ env:
   - SYMFONY_VERSION="3.1.*"
 
 before_script:
-  - if [[ $(phpenv version-name) != "hhvm" ]] then echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini fi
+  - if [[ $(phpenv version-name) != "hhvm" ]] then ((echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini)) fi
   - composer require symfony/http-foundation:${SYMFONY_VERSION}
 
 script: ./vendor/bin/phpunit --coverage-clover=coverage.clover
