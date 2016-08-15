@@ -9,7 +9,7 @@ interface PersistManagerInterface
     public function persist(Request $request);
 
     /**
-     * @return Request
+     * @return Request|boolean
      */
     public function getPendingRequest($blockTime = null);
 }

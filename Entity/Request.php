@@ -115,7 +115,7 @@ class Request
     private $userAgent;
 
     /**
-     * @var string
+     * @var integer
      *
      * @ORM\Column(name="total_database_query_time", type="integer")
      */

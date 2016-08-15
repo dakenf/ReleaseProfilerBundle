@@ -52,11 +52,6 @@ class DakenReleaseProfilerExtension extends Extension
         $container->setParameter('daken_release_profiler.log_conditions', $config['log_conditions']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        /*if (!$container->has('debug.stopwatch')) {
-            $loader->load('stopwatch.yml');
-        }*/
-
-
 
         $notifierName = $config['error_notifier'];
         if ($notifierName == 'slack') {

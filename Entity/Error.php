@@ -66,7 +66,7 @@ class Error
     private $stackTrace;
 
     /**
-     * @var string
+     * @var double
      *
      * @ORM\Column(name="reference", type="float", nullable=false)
      */

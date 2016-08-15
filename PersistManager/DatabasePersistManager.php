@@ -19,7 +19,7 @@ class DatabasePersistManager implements PersistManagerInterface
     public function persist(Request $request)
     {
         $this->em->persist($request);
-        $this->em->flush($request);
+        $this->em->flush();
     }
 
     /**
