@@ -63,7 +63,7 @@ class DatabaseQueryAdmin extends Admin
             ->add('parameters')
             ->add('stackTrace')
             ->add('time')
-            ->add('request', null, array('template' => 'DakenReleaseProfilerBundle:Admin:error_request_field.html.twig'))
+            ->add('request', null, ['template' => 'DakenReleaseProfilerBundle:Admin:error_request_field.html.twig'])
         ;
     }
 

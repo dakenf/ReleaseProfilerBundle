@@ -52,10 +52,10 @@ class ProfilerEventSubscriberTest extends \PHPUnit_Framework_TestCase
             $this->sqlLogger->setOldLogger(new SQLLogger());
 
 
-            $router = $this->getMock('Symfony\Component\Routing\RouterInterface');
+            $router = $this->getMockBuilder('Symfony\Component\Routing\RouterInterface')->getMock();
             $router
                 ->method('generate')
-                ->willReturnCallback(function (){
+                ->willReturnCallback(function () {
                     return 'http://site.com/error';
                 });
 

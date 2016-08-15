@@ -33,11 +33,11 @@ class SlackNotifier implements NotifierInterface
                 "{$error->getStackTrace()}",
         ];
 
-        if($this->username) {
+        if ($this->username) {
             $content['username'] = $this->username;
         }
 
-        if($this->emoji) {
+        if ($this->emoji) {
             $content['icon_emoji'] = $this->emoji;
         }
 

@@ -53,7 +53,7 @@ class ErrorAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('created')
-            ->add('request', null, array('template' => 'DakenReleaseProfilerBundle:Admin:error_request_field.html.twig'))
+            ->add('request', null, ['template' => 'DakenReleaseProfilerBundle:Admin:error_request_field.html.twig'])
             ->add('error')
             ->add('filename')
             ->add('lineNumber')

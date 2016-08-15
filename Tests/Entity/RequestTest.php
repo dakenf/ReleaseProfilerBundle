@@ -2,7 +2,6 @@
 
 namespace Daken\ReleaseProfilerBundle\Tests\Entity;
 
-
 use Daken\ReleaseProfilerBundle\Entity\DatabaseQuery;
 use Daken\ReleaseProfilerBundle\Entity\Request;
 

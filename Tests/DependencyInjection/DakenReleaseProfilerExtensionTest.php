@@ -88,7 +88,8 @@ class DakenReleaseProfilerExtensionTest extends AbstractExtensionTestCase
 
     /**
      * @expectedException        Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     * @expectedExceptionMessage Invalid persist manager name: invalid. It should be 'database', 'redis' or a service name.
+     * @expectedExceptionMessage Invalid persist manager name: invalid. It should be 'database', 'redis' or a
+     *                              service name.
      */
     public function testInvalidPersistManager()
     {

@@ -16,13 +16,16 @@ class RedisPersistManager implements PersistManagerInterface
         $this->keyPrefix = $keyPrefix;
     }
 
-    public function serializeRequest(Request $request){
+    public function serializeRequest(Request $request)
+    {
         return serialize($request);
     }
 
-    public function unserializeRequest($request){
-        if(!$request)
+    public function unserializeRequest($request)
+    {
+        if (!$request) {
             return $request;
+        }
 
         return unserialize($request);
     }

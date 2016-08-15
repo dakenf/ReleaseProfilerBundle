@@ -10,7 +10,7 @@ class DatabasePersistManagerTest extends \PHPUnit_Framework_TestCase
     public function testPersistManager()
     {
         $request = new Request();
-        $em = $this->getMock('Doctrine\ORM\EntityManagerInterface');
+        $em = $this->getMockBuilder('Doctrine\ORM\EntityManagerInterface')->getMock();
         $em
             ->expects($this->once())
             ->method('persist')
