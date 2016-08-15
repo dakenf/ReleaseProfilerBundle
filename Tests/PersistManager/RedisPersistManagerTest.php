@@ -25,6 +25,6 @@ class RedisPersistManagerTest extends \PHPUnit_Framework_TestCase
 
         $rp->persist($request);
         $this->assertEquals($rp->getPendingRequest(10), $request);
-        $this->assertFalse($rp->getPendingRequest(10));
+        $this->assertNull($rp->getPendingRequest(10));
     }
 }

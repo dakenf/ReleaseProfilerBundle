@@ -31,7 +31,7 @@ class FlushRequestsToDatabaseCommandTest extends \PHPUnit_Framework_TestCase
         $em
             ->expects($this->exactly(2))
             ->method('flush')
-            ->with($this->equalTo($request));
+            ->with();
 
         $container->set(
             'daken_release_profiler.persist_manager.database',
