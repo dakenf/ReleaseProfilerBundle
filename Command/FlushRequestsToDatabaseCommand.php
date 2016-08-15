@@ -32,7 +32,7 @@ class FlushRequestsToDatabaseCommand extends ContainerAwareCommand
         }
 
         $silent = $input->getOption('silent');
-        $req = null;
+
         while ($req = $currentManager->getPendingRequest($waitSeconds) or $waitSeconds) {
             if ($req) {
                 $databaseManager->persist($req);

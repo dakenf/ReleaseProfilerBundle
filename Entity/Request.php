@@ -122,7 +122,7 @@ class Request
     private $totalDatabaseQueryTime;
 
     /**
-     * @var string
+     * @var integer
      *
      * @ORM\Column(name="total_database_query_count", type="integer")
      */
@@ -340,7 +340,7 @@ class Request
     /**
      * Set requestBody
      *
-     * @param string $requestBody
+     * @param string|resource $requestBody
      *
      * @return Request
      */
