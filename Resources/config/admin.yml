@@ -1,0 +1,18 @@
+services:
+    daken_release_profiler.admin.request:
+        class: Daken\ReleaseProfilerBundle\Admin\RequestAdmin
+        arguments: [~, Daken\ReleaseProfilerBundle\Entity\Request, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Profiler, label: Requests, show_mosaic_button: false }
+
+    daken_release_profiler.admin.error:
+        class: Daken\ReleaseProfilerBundle\Admin\ErrorAdmin
+        arguments: [~, Daken\ReleaseProfilerBundle\Entity\Error, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Profiler, label: Errors, show_mosaic_button: false }
+
+    daken_release_profiler.admin.database_query:
+        class: Daken\ReleaseProfilerBundle\Admin\DatabaseQueryAdmin
+        arguments: [~, Daken\ReleaseProfilerBundle\Entity\DatabaseQuery, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Profiler, label: Database Queries, show_mosaic_button: false }

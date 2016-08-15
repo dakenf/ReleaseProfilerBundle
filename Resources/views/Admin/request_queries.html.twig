@@ -1,0 +1,38 @@
+{% block field_compare %}
+    {% if(value_compare is defined) %}
+        <td>
+            {% set value = value_compare %}
+            {{ block('field') }}
+        </td>
+    {% endif %}
+{% endblock %}
+
+{% block field %}
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Time, msec</th>
+            <th>Query</th>
+        </tr>
+        {% for query in value.owner.databaseQueries %}
+            <tr class="sonata-ba-view-container">
+                <td width="50"><a href="{{ path('admin_daken_releaseprofiler_databasequery_show', {id: query.id}) }}">{{ loop.index }}</a></td>
+                <td width="50"><a href="{{ path('admin_daken_releaseprofiler_databasequery_show', {id: query.id}) }}">{{ query.time }}</a></td>
+                <td>
+                    {{ query.query }}
+                    <br/>
+
+                    <p>
+                        <strong>With parameters:</strong> <br/>
+                        <span>{{ query.parameters }}</span>
+                    </p>
+
+                    <p><a href="javascript:void(0)" onclick="$('.query-formatted-{{ query.id }}').show(); $(this).hide()">Show formatted query</a></p>
+                    <div class="query-formatted-{{ query.id }}" style="display: none">
+                        {{ profiler_format_sql(query.query)|raw }}
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,4 @@
+services:
+    debug.stopwatch:
+        class: Symfony\Component\Stopwatch\Stopwatch
+        arguments: []

@@ -1,0 +1,4 @@
+services:
+    daken_release_profiler.persist_manager.redis:
+        class: Daken\ReleaseProfilerBundle\PersistManager\RedisPersistManager
+        arguments: ["@daken_release_profiler.redis.backend", "%daken_release_profiler.redis.key_prefix%"]

@@ -1,0 +1,27 @@
+{% block field_compare %}
+    {% if(value_compare is defined) %}
+        <td>
+            {% set value = value_compare %}
+            {{ block('field') }}
+        </td>
+    {% endif %}
+{% endblock %}
+
+{% block field %}
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Exception</th>
+            <th>Error</th>
+        </tr>
+        {% for error in value.owner.errors %}
+            <tr class="sonata-ba-view-container">
+                <td width="50"><a href="{{ path('admin_daken_releaseprofiler_error_show', {id: error.id}) }}">{{ loop.index }}</a></td>
+                <td width="50"><a href="{{ path('admin_daken_releaseprofiler_error_show', {id: error.id}) }}">{{ error.exceptionClass }}</a></td>
+                <td>
+                    {{ error.error }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

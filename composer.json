@@ -1,0 +1,43 @@
+{
+  "name": "dakenf/release-profiler-bundle",
+  "type": "symfony-bundle",
+  "description": "This Bundle provides request logging and extended error reporting by slack or email",
+  "keywords": ["error reporting", "profiler", "logging", "slack"],
+  "homepage": "https://daken.ru",
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Arthur Islamov",
+      "homepage": "https://github.com/dakenf/ReleaseProfilerBundle"
+    }
+  ],
+
+  "require": {
+    "php": "^5.4.0|^7.0",
+    "symfony/framework-bundle": "~2.6|~3.0",
+    "doctrine/orm": "~2.4|~2.5",
+    "guzzlehttp/guzzle": "~5.0|~6.0",
+    "jdorn/sql-formatter": "*"
+  },
+
+  "require-dev": {
+    "symfony/dependency-injection": "~2.6|~3.0",
+    "matthiasnoback/symfony-config-test": "^2.0",
+    "matthiasnoback/symfony-dependency-injection-test": "^1.0",
+    "twig/twig": "^1.18",
+    "snc/redis-bundle": "2.x-dev",
+    "predis/predis": "^1.0",
+    "sonata-project/admin-bundle": "3.4.*"
+  },
+
+  "autoload": {
+    "psr-4": { "Daken\\ReleaseProfilerBundle\\": "" }
+  },
+
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.1-dev"
+    }
+  }
+}

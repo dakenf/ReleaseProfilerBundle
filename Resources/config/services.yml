@@ -1,0 +1,43 @@
+services:
+    daken_release_profiler.sql_logger:
+        class: Daken\ReleaseProfilerBundle\Logging\SQLLogger
+        arguments: ["%daken_release_profiler.database.query_time_log_threshold%"]
+
+    daken_release_profiler.persist_manager.database:
+        class: Daken\ReleaseProfilerBundle\PersistManager\DatabasePersistManager
+        arguments: ["@daken_release_profiler.database.entity_manager"]
+
+    daken_release_profiler.event_subscriber:
+        class: Daken\ReleaseProfilerBundle\EventSubscriber\ProfilerEventSubscriber
+        arguments:
+          - "@daken_release_profiler.persist_manager"
+          - "@daken_release_profiler.sql_logger"
+          - "@router"
+          - "@debug.stopwatch"
+          - "%daken_release_profiler.log_conditions%"
+          - "@security.token_storage"
+          - "@daken_release_profiler.error_notifier"
+
+        tags:
+            - { name: kernel.event_subscriber }
+    daken_release_profiler.twig_extension:
+        class: Daken\ReleaseProfilerBundle\Twig\ProfilerExtension
+        tags:
+            - { name: twig.extension }
+
+    daken_release_profiler.guzzle_client.default:
+        class: GuzzleHttp\Client
+
+    daken_release_profiler.error_notifier.slack:
+        class: Daken\ReleaseProfilerBundle\Notifier\SlackNotifier
+        arguments:
+          - "@daken_release_profiler.guzzle_client"
+          - "%daken_release_profiler.slack.hook_url%"
+          - "%daken_release_profiler.slack.username%"
+          - "%daken_release_profiler.slack.emoji%"
+
+    daken_release_profiler.error_notifier.email:
+        class: Daken\ReleaseProfilerBundle\Notifier\EmailNotifier
+
+    daken_release_profiler.error_notifier.null:
+        class: Daken\ReleaseProfilerBundle\Notifier\NullNotifier

@@ -1,0 +1,9 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% spaceless %}
+        {% if value %}
+            <a href="{{ path('admin_daken_releaseprofiler_request_show', {id: value.id}) }}">{{ value }}</a>
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}
