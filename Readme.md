@@ -33,7 +33,7 @@ Step 1: Download the Bundle
 
 To install :
 
-    $ composer require dakenf/release-profiler "~1"
+    $ composer require dakenf/release-profiler-bundle "~1"
 
 
 Step 2: Enable the Bundle
