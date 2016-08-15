@@ -71,11 +71,14 @@ In this case you should define another entity manager for this bundle because wh
     
     doctrine:
         orm:
+            auto_generate_proxy_classes: "%kernel.debug%"
             default_entity_manager: default
             entity_managers:
                 default:
                     connection: default
-                # you must define on
+                    mappings:
+                        AppBundle: ~
+                # this is our second entity manager. it can use same connection
                 profiler:
                     connection: default
                     mappings:
@@ -95,7 +98,7 @@ In this case you should define another entity manager for this bundle because wh
             - { error: true }
     
         enable_sonata: true
-        notifier: slack
+        error_notifier: slack
         slack:
             hook_url: %your_custom_slack_hook_url_parameter%
             username: Rage bot
@@ -108,11 +111,14 @@ Log only errors to database and post to slack without redis. But also log all re
     
     doctrine:
         orm:
+            auto_generate_proxy_classes: "%kernel.debug%"
             default_entity_manager: default
             entity_managers:
                 default:
                     connection: default
-                # you must define on
+                    mappings:
+                        AppBundle: ~
+                # this is our second entity manager. it can use same connection
                 profiler:
                     connection: default
                     mappings:
@@ -135,7 +141,7 @@ Log only errors to database and post to slack without redis. But also log all re
             - { host: "%api_host%" }
     
         enable_sonata: true
-        notifier: slack
+        error_notifier: slack
         slack:
             hook_url: %your_custom_slack_hook_url_parameter%
             username: Rage bot
@@ -168,7 +174,7 @@ Log database queries that last longer than 50 msec.
     
         enable_sonata: true
         database_query_time_log_threshold: 50
-        notifier: slack
+        error_notifier: slack
         slack:
             hook_url: %your_custom_slack_hook_url_parameter%
             username: Rage bot
@@ -185,8 +191,23 @@ You might also want to add roles for your users that should be able to see profi
         - ROLE_DAKEN_RELEASE_PROFILER_ADMIN_DATABASE_QUERY_LIST
         - ROLE_DAKEN_RELEASE_PROFILER_ADMIN_DATABASE_QUERY_VIEW
         
-Step 4: Running flush command
+Step 4: Crating database tables
 ------------------------------
+
+If you have defined another entity manager for profiler and now want to get SQL queries to create tables
+you should add `--em=profiler` to command, where profiler is entity manager's name.
+    
+    $ php app/console doctrine:schema:update --dump-sql --em=profiler
+    
+or
+
+    $ php app/console doctrine:migrations:diff --em=profiler
+
+        
+Step 5: Running flush command
+------------------------------
+
+This step is needed only when you use redis as persist manager.
 
 You should consider using redis because database persist manager will add overhead to each of your requests, 
 however on small projects it won't have big impact.
