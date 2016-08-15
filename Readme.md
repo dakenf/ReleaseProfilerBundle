@@ -20,6 +20,9 @@ in redis. After that it is persisted to database using `daken:profiler:flush` co
 
 Using redis is strongly recommended as it won't add significant overhead to each of your requests.
 
+[[https://raw.githubusercontent.com/dakenf/ReleaseProfilerBundle/master/Resources/readme_images/request_list.png]]
+[[https://raw.githubusercontent.com/dakenf/ReleaseProfilerBundle/master/Resources/readme_images/request.png]]
+
 Installation
 ============
 
@@ -28,20 +31,14 @@ Step 1: Download the Bundle
 
 To install :
 
-.. code-block:: bash
-
     $ composer require dakenf/release-profiler "~1"
 
-This command requires you to have Composer installed globally, as explained
-in the `installation chapter`_ of the Composer documentation.
 
 Step 2: Enable the Bundle
 -------------------------
 
 Then, enable the bundle by adding it to the list of registered bundles
 in the ``app/AppKernel.php`` file of your project:
-
-.. code-block:: php
 
     <?php
     // app/AppKernel.php
@@ -68,8 +65,6 @@ Log only errors to database and post to slack without redis
 In this case you should define another entity manager for this bundle because when doctrine gets any database error
  while working with EM, it closes it permanently. So code won't able to persist request data.
 
-.. code-block:: yaml
-    
     # app/config.yml
     
     doctrine:
@@ -107,8 +102,6 @@ In this case you should define another entity manager for this bundle because wh
 Usage scenario 2: 
 Log only errors to database and post to slack without redis. But also log all requests and responses on API host.
 
-.. code-block:: yaml
-    
     # app/config.yml
     
     doctrine:
@@ -151,8 +144,6 @@ Log all requests except 404, save request and response body only on API host. Us
 to save request data. Exclude sonata admin and symfony debug toolbar requests. 
 Log database queries that last longer than 50 msec.
 
-.. code-block:: yaml
-
     # app/config.yml
 
     daken_release_profiler:
@@ -182,7 +173,6 @@ Log database queries that last longer than 50 msec.
             emoji: ":rage4:"
     
 You might also want to add roles for your users that should be able to see profiler data
-.. code-block:: yaml
 
     # app/securtiy.yml
     ROLE_SOME_USER:
@@ -200,8 +190,6 @@ You should consider using redis because database persist manager will add overhe
 however on small projects it won't have big impact.
 
 You can run flush command with cron or start it as a service.
-
-.. code-block:: bash
 
     $ php app/console daken:profiler:flush -d --silent
 
