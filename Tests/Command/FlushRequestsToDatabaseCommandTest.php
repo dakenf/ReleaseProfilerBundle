@@ -23,7 +23,7 @@ class FlushRequestsToDatabaseCommandTest extends \PHPUnit_Framework_TestCase
             $sourceManager
         );
 
-        $em = $this->createMock('Doctrine\ORM\EntityManagerInterface');
+        $em = $this->getMock('Doctrine\ORM\EntityManagerInterface');
         $em
             ->expects($this->exactly(2))
             ->method('persist')

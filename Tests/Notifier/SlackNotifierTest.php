@@ -12,7 +12,7 @@ class SlackNotifierTest extends \PHPUnit_Framework_TestCase
         $postResult = null;
         $targetUrl = null;
 
-        $guzzle = $this->createMock('Daken\ReleaseProfilerBundle\Tests\Notifier\TestGuzzleInterface');
+        $guzzle = $this->getMock('Daken\ReleaseProfilerBundle\Tests\Notifier\TestGuzzleInterface');
         $guzzle
             ->expects($this->once())
             ->method('post')

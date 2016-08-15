@@ -29,22 +29,21 @@ class DakenReleaseProfilerExtensionTest extends AbstractExtensionTestCase
     }
 
 
+    /**
+     * @expectedException        Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage The child node "persist_manager" at path "daken_release_profiler" must be configured.
+     */
     public function testEmptyConfig()
     {
-        $this->expectException(get_class(new InvalidConfigurationException()));
-        $this->expectExceptionMessage(
-            "The child node \"persist_manager\" at path \"daken_release_profiler\" must be configured."
-        );
         $this->load();
     }
 
+    /**
+     * @expectedException        Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage Configuration condition 'request' must be an array.
+     */
     public function testWrongConditions()
     {
-        $this->expectException(get_class(new InvalidConfigurationException()));
-        $this->expectExceptionMessage(
-            "Configuration condition 'request' must be an array."
-        );
-
         $this->load([
             'persist_manager' => 'redis',
             'log_conditions' => [
@@ -55,13 +54,12 @@ class DakenReleaseProfilerExtensionTest extends AbstractExtensionTestCase
         ]);
     }
 
+    /**
+     * @expectedException        Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage Configuration condition 'request' is empty.
+     */
     public function testWrongConditions2()
     {
-        $this->expectException(get_class(new InvalidConfigurationException()));
-        $this->expectExceptionMessage(
-            "Configuration condition 'request' is empty."
-        );
-
         $this->load([
             'persist_manager' => 'redis',
             'log_conditions' => [
@@ -72,13 +70,12 @@ class DakenReleaseProfilerExtensionTest extends AbstractExtensionTestCase
         ]);
     }
 
+    /**
+     * @expectedException        Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage Unknown configuration condition 'test' under 'request'.
+     */
     public function testWrongConditions3()
     {
-        $this->expectException(get_class(new InvalidConfigurationException()));
-        $this->expectExceptionMessage(
-            "Unknown configuration condition 'test' under 'request'."
-        );
-
         $this->load([
             'persist_manager' => 'redis',
             'log_conditions' => [
@@ -89,25 +86,23 @@ class DakenReleaseProfilerExtensionTest extends AbstractExtensionTestCase
         ]);
     }
 
+    /**
+     * @expectedException        Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage Invalid persist manager name: invalid. It should be 'database', 'redis' or a service name.
+     */
     public function testInvalidPersistManager()
     {
-        $this->expectException(get_class(new InvalidConfigurationException()));
-        $this->expectExceptionMessage(
-            "Invalid persist manager name: invalid. It should be 'database', 'redis' or a service name."
-        );
-
         $config = $this->getValidConfig();
         $config['persist_manager'] = 'invalid';
         $this->load($config);
     }
 
+    /**
+     * @expectedException        Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage You must set a service for redis.
+     */
     public function testEmptyRedisConfig()
     {
-        $this->expectException(get_class(new InvalidConfigurationException()));
-        $this->expectExceptionMessage(
-            "You must set a service for redis."
-        );
-
         $this->load([
             'persist_manager' => 'redis',
             'log_conditions' => [
@@ -145,25 +140,23 @@ class DakenReleaseProfilerExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasService('daken_release_profiler.admin.database_query');
     }
 
+    /**
+     * @expectedException        Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage Invalid error notifier name: invalid. It should be 'slack', 'null' or a service name.
+     */
     public function testInvalidErrorNotifier()
     {
-        $this->expectException(get_class(new InvalidConfigurationException()));
-        $this->expectExceptionMessage(
-            "Invalid error notifier name: invalid. It should be 'slack', 'null' or a service name."
-        );
-
         $config = $this->getValidConfig();
         $config['error_notifier'] = 'invalid';
         $this->load($config);
     }
 
+    /**
+     * @expectedException        Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
+     * @expectedExceptionMessage You should define a hook url for slack.
+     */
     public function testSlackInvalidConfig()
     {
-        $this->expectException(get_class(new InvalidConfigurationException()));
-        $this->expectExceptionMessage(
-            "You should define a hook url for slack."
-        );
-
         $config = $this->getValidConfig();
         $config['error_notifier'] = 'slack';
 
