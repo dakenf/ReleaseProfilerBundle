@@ -25,7 +25,7 @@ services:
         tags:
             - { name: twig.extension }
 
-     daken_release_profiler.guzzle_client.default:
+    daken_release_profiler.guzzle_client.default:
         class: GuzzleHttp\Client
 
     daken_release_profiler.error_notifier.email:
