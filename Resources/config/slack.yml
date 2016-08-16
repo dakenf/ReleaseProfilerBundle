@@ -1,7 +1,4 @@
 services:
-  daken_release_profiler.guzzle_client.default:
-    class: GuzzleHttp\Client
-
   daken_release_profiler.error_notifier.slack:
     class: Daken\ReleaseProfilerBundle\Notifier\SlackNotifier
     arguments:
