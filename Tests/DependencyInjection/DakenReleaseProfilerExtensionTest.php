@@ -4,7 +4,6 @@ namespace Daken\ReleaseProfilerBundle\Tests\DependencyInjection;
 
 use Daken\ReleaseProfilerBundle\DependencyInjection\DakenReleaseProfilerExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
-use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 
 class DakenReleaseProfilerExtensionTest extends AbstractExtensionTestCase
 {
@@ -176,6 +175,19 @@ class DakenReleaseProfilerExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasParameter('daken_release_profiler.slack.hook_url', 'http://slack.com');
         $this->assertContainerBuilderHasParameter('daken_release_profiler.slack.username', 'username');
         $this->assertContainerBuilderHasParameter('daken_release_profiler.slack.emoji', 'emoji');
+    }
+
+    public function testNullNotifier()
+    {
+        $config = $this->getValidConfig();
+        $config['error_notifier'] = null;
+
+        $this->load($config);
+
+        $this->assertContainerBuilderHasAlias(
+            'daken_release_profiler.error_notifier',
+            'daken_release_profiler.error_notifier.null'
+        );
     }
 
     /**

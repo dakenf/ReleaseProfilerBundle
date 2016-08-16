@@ -94,7 +94,7 @@ class Request
     private $responseCode;
 
     /**
-     * @var string
+     * @var string|resource
      *
      * @ORM\Column(name="response", type="blob", nullable=true)
      */

@@ -25,17 +25,6 @@ services:
         tags:
             - { name: twig.extension }
 
-    daken_release_profiler.guzzle_client.default:
-        class: GuzzleHttp\Client
-
-    daken_release_profiler.error_notifier.slack:
-        class: Daken\ReleaseProfilerBundle\Notifier\SlackNotifier
-        arguments:
-          - "@daken_release_profiler.guzzle_client"
-          - "%daken_release_profiler.slack.hook_url%"
-          - "%daken_release_profiler.slack.username%"
-          - "%daken_release_profiler.slack.emoji%"
-
     daken_release_profiler.error_notifier.email:
         class: Daken\ReleaseProfilerBundle\Notifier\EmailNotifier
 
