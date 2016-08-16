@@ -129,7 +129,8 @@ class ProfilerEventSubscriber implements EventSubscriberInterface
             $exception instanceof HttpExceptionInterface ? $exception->getStatusCode() : 500
         );
 
-        if ($this->errorNotifier) {
+        // lets notify only when error matches request log conditions
+        if ($this->errorNotifier && $this->shouldLog($this->logConditions['request'])) {
             $url = $this->router->generate(
                 'admin_daken_releaseprofiler_error_list',
                 ['filter[reference][value]' => $error->getReference()],
