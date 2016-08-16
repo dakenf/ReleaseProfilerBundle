@@ -67,8 +67,6 @@ class DakenReleaseProfilerExtension extends Extension
 
         $loader->load('services.yml');
 
-        $container->setAlias('daken_release_profiler.guzzle_client', 'daken_release_profiler.guzzle_client.default');
-
         if ($notifierName == null) {
             $notifierName = 'null';
         }
@@ -76,6 +74,11 @@ class DakenReleaseProfilerExtension extends Extension
         if (!$container->has($notifierName)) {
             if ($notifierName == 'slack') {
                 $loader->load('slack.yml');
+
+                $container->setAlias(
+                    'daken_release_profiler.guzzle_client',
+                    'daken_release_profiler.guzzle_client.default'
+                );
             }
 
             $notifierPrefix = 'daken_release_profiler.error_notifier.';
