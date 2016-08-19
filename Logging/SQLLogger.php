@@ -6,6 +6,7 @@ use Daken\ReleaseProfilerBundle\Entity\DatabaseQuery;
 
 class SQLLogger implements \Doctrine\DBAL\Logging\SQLLogger
 {
+    // 0KHQstC+0Y4g0LzQsNC80LrRgyDQt9Cw0LvQvtCz0LPQuNGA0YPQuQ==
     /** @var  \Doctrine\DBAL\Logging\SQLLogger */
     private $oldLogger;
     private $queries;
