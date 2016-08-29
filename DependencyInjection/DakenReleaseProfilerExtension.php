@@ -111,6 +111,10 @@ class DakenReleaseProfilerExtension extends Extension
             }
 
             $container->addAliases(['daken_release_profiler.database.entity_manager' => $config['entity_manager']]);
+        } else {
+            $container->addAliases(
+                ['daken_release_profiler.database.entity_manager' => 'doctrine.orm.default_entity_manager']
+            );
         }
 
         if (!$container->has($persistManagerName)) {
