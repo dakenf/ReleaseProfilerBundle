@@ -38,7 +38,7 @@ class DatabaseQuery
     /**
      * @var string
      *
-     * @ORM\Column(name="parameters", type="string", nullable=true)
+     * @ORM\Column(name="parameters", type="text", nullable=true)
      */
     private $parameters;
 
