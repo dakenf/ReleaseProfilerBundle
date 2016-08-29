@@ -109,9 +109,13 @@ class DakenReleaseProfilerExtension extends Extension
             if (!isset($config['entity_manager'])) {
                 throw new InvalidConfigurationException("You must set entity_manager parameter.");
             }
-
-            $container->addAliases(['daken_release_profiler.database.entity_manager' => $config['entity_manager']]);
         }
+
+        $entityManager = isset($config['entity_manager']) ?
+            $config['entity_manager'] : 'doctrine.orm.default_entity_manager';
+        $container->addAliases(
+            ['daken_release_profiler.database.entity_manager' => $entityManager]
+        );
 
         if (!$container->has($persistManagerName)) {
             $managerPrefix = 'daken_release_profiler.persist_manager.';
